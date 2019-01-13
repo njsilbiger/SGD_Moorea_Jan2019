@@ -76,8 +76,10 @@ pharmacie$time<-ymd_hms(pharmacie$time)
 # read in all the kayak salininty data
 AllSalinity<-read.csv('output/AllMerge.csv')
 AllSalinity$X<-NULL
+AllSalinity$time<-ymd_hms(AllSalinity$time)
 #merge it with the LTER 6 spatial data
 SpatialData$by5<-NULL
+SpatialData$time<-ymd_hms(SpatialData$time)
 AllSalinity<-rbind(AllSalinity,SpatialData)
 
 #combine the LTER 6 and pharmacie data
