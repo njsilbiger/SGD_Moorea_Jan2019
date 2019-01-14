@@ -144,7 +144,7 @@ Allplots<-ggarrange(Moorea,                                                 # Fi
 )
   
   
-ggsave('output/SpatialRadon.pdf', plot = Allplots, device = 'pdf', width = 8, height = 12)
+ggsave('output/SpatialRadon.pdf', plot = Allplots, device = 'pdf', width = 8, height = 12, useDingbats=FALSE)
 
 ## 24 hour salinity data
 
