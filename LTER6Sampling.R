@@ -85,7 +85,10 @@ AllSalinity<-rbind(AllSalinity,SpatialData)
 #combine the LTER 6 and pharmacie data
 Spatial_rad<-rbind(Spatial_rad, pharmacie)
 # if rad <1 make 0 because that is undetectable
-Spatial_rad$radon_mean[Spatial_rad$radon_mean<1]<-0
+#Spatial_rad$radon_mean[Spatial_rad$radon_mean<1]<-0
+
+# convert DPM L-1 to m-3
+#Spatial_rad$radon_mean<-Spatial_rad$radon_mean*1000
 
 # bring in shape file of french polynesia
 aoi_boundary_FP <- st_read(
@@ -105,7 +108,8 @@ Moorea<-ggplot() +
                          low = 'yellow', high = 'darkblue')+
   theme_bw()+
   geom_point(data = Spatial_rad, aes(x = lon, y = lat,size = radon_mean), bg = 'red',pch = 21, shape = 1)+
-  labs(size=expression("Radon DMP L"^{-1}))+
+  labs(size=expression("Radon DPM M"^{-3}))+
+#  scale_size_area(limits = c(0, 10000), breaks = c(0, 1000, 3000, 5000, 7000, 10000))+
   ggsn::scalebar(x.min = -149.93, x.max = -149.87,
                 y.min = -17.59,  y.max = -17.58, dist = 2.5, st.dist = 0.8,
                 st.size=4, height=0.5, dd2km = TRUE, model = 'WGS84')
