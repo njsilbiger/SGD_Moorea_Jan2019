@@ -239,6 +239,8 @@ AllMerge_ave$time<-ymd_hms(AllMerge_ave$time)
 
 # join with the one radon detection
 radpoint<-left_join(radon1[detect,],AllMerge_ave)
+# export the radon data
+
 
 North1<-FP2 + 
   ggtitle('North 1')+
